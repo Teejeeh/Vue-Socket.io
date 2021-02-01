@@ -28,7 +28,7 @@ export default class VueSocketIO {
      */
     install(app, options) {
         app.socket = this.io;
-        Vue.mixin(Mixin);
+        app.mixin(Mixin);
 
         Logger.info('Vue-Socket.io plugin enabled');
     }
