@@ -13,7 +13,7 @@ export default class VueSocketIO {
      * @param debug
      * @param options
      */
-    constructor({connection, vuex, debug, options}){
+    constructor({ connection, vuex, debug, options }) {
 
         Logger.debug = debug;
         this.io = this.connect(connection, options);
@@ -26,7 +26,7 @@ export default class VueSocketIO {
      * Vue.js entry point
      * @param Vue
      */
-    install: (app, options) => {
+    install(app, options) {
         app.socket = this.io;
         Vue.mixin(Mixin);
 
@@ -39,15 +39,15 @@ export default class VueSocketIO {
      * @param connection
      * @param options
      */
-    connect(connection, options){
+    connect(connection, options) {
 
-        if(connection && typeof connection === 'object'){
+        if (connection && typeof connection === 'object') {
 
             Logger.info('Received socket.io-client instance');
 
             return connection;
 
-        } else if(typeof connection === 'string'){
+        } else if (typeof connection === 'string') {
 
             Logger.info('Received connection string');
 
