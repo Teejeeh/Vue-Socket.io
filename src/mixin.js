@@ -3,9 +3,9 @@ export default {
     /**
      *  Assign runtime callbacks
      */
-    beforeCreate(){
+    beforeCreate() {
 
-        if(!this.sockets) this.sockets = {};
+        if (!this.sockets) this.sockets = {};
 
         this.sockets.subscribe = (event, callback) => {
             this.$vueSocketIo.emitter.addListener(event, callback, this);
@@ -20,13 +20,13 @@ export default {
     /**
      * Register all socket events
      */
-    mounted(){
+    mounted() {
 
-        if(this.$options.sockets){
+        if (this.$options.sockets) {
 
             Object.keys(this.$options.sockets).forEach(event => {
 
-                if(event !== 'subscribe' && event !== 'unsubscribe') {
+                if (event !== 'subscribe' && event !== 'unsubscribe') {
                     this.$vueSocketIo.emitter.addListener(event, this.$options.sockets[event], this);
                 }
 
@@ -39,9 +39,9 @@ export default {
     /**
      * unsubscribe when component unmounting
      */
-    beforeDestroy(){
+    beforeUnmount() {
 
-        if(this.$options.sockets){
+        if (this.$options.sockets) {
 
             Object.keys(this.$options.sockets).forEach(event => {
 
